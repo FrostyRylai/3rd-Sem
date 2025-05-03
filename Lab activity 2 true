@@ -1,0 +1,86 @@
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+using namespace std;
+
+struct emp
+{
+    char name[50];
+    char position[30];
+    char department[30];
+    int age = 0;
+    float salary = 0;
+};
+
+void Accept();
+
+void Output(emp* employee, int counter);
+
+void design();
+
+int main()
+{
+
+    Accept();
+    system("pause");
+}
+
+void Accept() {
+    const int MAX_USER = 3;
+    emp* employee = new emp[MAX_USER];
+
+    for (int i = 0; i < MAX_USER; i++)
+    {
+        emp* ptr = employee + i;
+        design();
+        cout << "||                Employee Record " << i + 1 << "                    ||" << endl;
+        design();
+        cout << "Employee Name      : ";
+        cin.getline(ptr->name, 49);
+
+        cout << "Employee Age      : ";
+        cin >> ptr->age;
+        cin.ignore();
+
+        cout << "Employee Position  : ";
+        cin.getline(ptr->position, 29);
+
+        cout << "Employee Department    : ";
+        cin.getline(ptr->department, 29);
+
+        cout << "Employee Salary        : ";
+        cin >> ptr->salary;
+        cin.ignore();
+
+        system("pause");
+        system("cls");
+
+    }
+    Output(employee, MAX_USER);
+    delete[] employee;
+}
+
+void Output(emp* employee, int counter) {
+    cout << fixed;
+    cout << endl;
+    design();
+    cout << "||            Employees Record Encoded....             ||" << endl;
+    design();
+    for (int i = 0; i < counter; i++) {
+        cout << endl;
+        cout << "Employee #" << i + 1 << endl;
+        cout << "Employee Name          : " << employee->name << endl;
+        cout << "Employee Age           : " << employee->age << endl;
+        cout << "Employee Position      : " << employee->position << endl;
+        cout << "Employee Department    : " << employee->department << endl;
+        cout << "Employee Salary        : " << setprecision(2) << employee->salary << endl;
+        cout << endl;
+        design();
+    }
+    system("pause");
+    system("cls");
+}
+
+void design() {
+    cout << "=========================================================" << endl;;
+}
