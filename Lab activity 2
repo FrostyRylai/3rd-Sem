@@ -1,0 +1,83 @@
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+using namespace std;
+
+struct emp
+{
+    char name[50];
+    char position[30];
+    char department[30];
+    int age = 0;
+    float salary = 0;
+};
+
+void Accept();
+
+void Output(emp* employee, int counter);
+
+void design();
+
+int main()
+{
+
+    Accept();
+    system("pause");
+}
+
+void Accept() {
+    const int MAX_USER = 3;
+    emp employee[MAX_USER];
+
+    for (int i = 0; i < MAX_USER; i++)
+    {
+        design();
+        cout << "||                Employee Record " << i + 1 << "                    ||" << endl;
+        design();
+        cout << "Employee Name      : ";
+        cin.getline(employee[i].name, 49);
+
+        cout << "Employee Age      : ";
+        cin >> employee[i].age;
+        cin.ignore();
+
+        cout << "Employee Position  : ";
+        cin.getline(employee[i].position, 29);
+
+        cout << "Employee Department    : ";
+        cin.getline(employee[i].department, 29);
+
+        cout << "Employee Salary        : ";
+        cin >> employee[i].salary;
+        cin.ignore();
+
+        system("pause");
+        system("cls");
+
+    }
+    Output(employee, MAX_USER);
+}
+
+void Output(emp* employee, int counter) {
+    cout << fixed;
+    cout << endl;
+    design();
+    cout << "||            Employees Record Encoded....             ||" << endl;
+    design();
+    for (int i = 0; i < counter; i++) {
+        cout << "Employee #" << i + 1 << endl;
+        cout << "Employee Name          : " << employee[i].name << endl;
+        cout << "Employee Age           : " << employee[i].age << endl;
+        cout << "Employee Position      : " << employee[i].name << endl;
+        cout << "Employee Department    : " << employee[i].name << endl;
+        cout << "Employee Salary        : " << setprecision(2) << employee[i].salary << endl;
+        cout << endl;
+        design();
+    }
+    system("pause");
+    system("cls");
+}
+
+void design() {
+    cout << "=========================================================" << endl;;
+}
