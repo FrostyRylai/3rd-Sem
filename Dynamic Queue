@@ -1,0 +1,119 @@
+.h:
+
+#ifndef DYNINTQUEUE_H
+#define DYNINTQUEUE_H
+using namespace std;
+
+class DynIntQueue
+{
+    private:
+        struct QueueNode
+        {
+            int value;
+            QueueNode *next;
+        };
+        
+        QueueNode *front;
+        QueueNode *rear;
+        int numItems;
+        
+    public:
+        DynIntQueue();
+        ~DynIntQueue();
+        
+        void enqueue(int);
+        void dequeue(int &);
+        bool isEmpty();
+        bool isFull();
+        void clear();
+};
+#endif
+
+DynIntQueue::DynIntQueue(void)
+{
+    front = NULL;
+    rear = NULL;
+    numItems = 0;
+}
+
+DynIntQueue::~DynIntQueue()
+{
+    clear();
+}
+
+void DynIntQueue::enqueue(int num)
+{
+    QueueNode *newNode;
+    newNode = new QueueNode;
+    newNode->value = num;
+    newNode->next = NULL;
+    if (isEmpty())
+    {
+        front = newNode;
+        rear = newNode;
+    }
+    else
+    {
+        rear->next = newNode;
+        rear = newNode;
+    }
+    numItems++;
+}
+
+void DynIntQueue::dequeue(int &num)
+{
+    QueueNode *temp;
+    if (isEmpty())
+        cout << "The queue is empty.\n";
+    else
+    {
+        num = front->value;
+        temp = front->next;
+        delete front;
+        front = temp;
+        numItems--;
+    }
+}
+
+bool DynIntQueue::isEmpty()
+{
+    bool status;
+    if (numItems)
+        status = false;
+    else
+        status = true;
+    return status;
+}
+
+void DynIntQueue::clear()
+{
+    int value; // Dummy variable for dequeue
+    while(!isEmpty())
+    dequeue(value);
+}
+
+
+main:
+
+
+// This program demonstrates the DynIntQeue class
+#include <iostream>
+#include "dynintqueue.h"
+using namespace std;
+int main()
+{
+    DynIntQueue iQueue;
+    cout << "Enqueuing 5 items...\n";
+    // Enqueue 5 items.
+    for (int x = 0; x < 5; x++)
+        iQueue.enqueue(x);
+        
+// Deqeue and retrieve all items in the queue
+    cout << "The values in the queue were:\n";
+    while (!iQueue.isEmpty())
+    {
+        int value;
+        iQueue.dequeue(value);
+        cout << value << endl;
+    }
+}
