@@ -1,0 +1,117 @@
+.h:
+
+using namespace std;
+
+class IntQueue
+{
+    private:
+        int *queueArray;
+        int queueSize;
+        int front;
+        int rear;
+        int numItems;
+    public:
+        IntQueue(int);
+        ~IntQueue();
+        void enqueue(int);
+        void dequeue(int &);
+        bool isEmpty();
+        bool isFull();
+        void clear();
+};
+
+IntQueue::IntQueue(int s)
+{
+    queueArray = new int[s];
+    queueSize = s;
+    front = -1;
+    rear = -1;
+    numItems = 0;
+}
+
+IntQueue::~IntQueue()
+{
+    delete [] queueArray;
+}
+
+    
+void IntQueue::enqueue(int num)
+{
+    if (isFull())
+        cout << "The queue is full.\n";
+    else
+    {
+        // Calculate the new rear position
+        rear = (rear + 1) % queueSize;
+        // Insert new item
+        queueArray[rear] = num;
+        // Update item count
+        numItems++;
+    }
+}
+
+void IntQueue::dequeue(int &num)
+{
+    if (isEmpty())
+        cout << "The queue is empty.\n";
+    else
+    {
+        // Move front
+        front = (front + 1) % queueSize;
+        // Retrieve the front item
+        num = queueArray[front];
+        // Update item count
+        numItems--;
+    }
+}
+
+bool IntQueue::isEmpty()
+{
+    bool status;
+    if (numItems)
+        status = false;
+    else
+        status = true;
+    return status;
+}
+
+bool IntQueue::isFull()
+{
+    bool status;
+    if (numItems < queueSize)
+        status = false;
+    else
+        status = true;
+    return status;
+}
+
+void IntQueue::clear()
+{
+    front = queueSize - 1;
+    rear = queueSize - 1;
+    numItems = 0;
+}
+
+main:
+
+// This program demonstrates the DynIntQeue class
+#include <iostream>
+#include "dynintqueue.h"
+using namespace std;
+int main()
+{
+    DynIntQueue iQueue;
+    cout << "Enqueuing 5 items...\n";
+    // Enqueue 5 items.
+    for (int x = 0; x < 5; x++)
+        iQueue.enqueue(x);
+        
+// Deqeue and retrieve all items in the queue
+    cout << "The values in the queue were:\n";
+    while (!iQueue.isEmpty())
+    {
+        int value;
+        iQueue.dequeue(value);
+        cout << value << endl;
+    }
+}
