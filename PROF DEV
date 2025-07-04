@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FINAL PROJECT</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts and Bootstrap -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffffff, #f7f1e5);
+            color: #4e342e;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .brand-heading {
+            font-size: 72px;
+            font-weight: 700;
+            color: #c9a227;
+            text-shadow: 2px 2px 10px rgba(201, 162, 39, 0.4);
+            letter-spacing: 4px;
+            animation: glowUp 2s ease-in-out infinite alternate;
+        }
+
+            .brand-heading i {
+                color: #f9cb62;
+                font-size: 1.4em;
+            }
+
+        .brand-bio {
+            font-size: 1.2rem;
+            color: #5d4037;
+            margin-top: 1rem;
+            font-style: italic;
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes glowUp {
+            from {
+                text-shadow: 2px 2px 10px rgba(201, 162, 39, 0.4);
+            }
+
+            to {
+                text-shadow: 0 0 20px rgba(255, 223, 115, 0.8);
+            }
+        }
+
+        .section-heading {
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+            margin: 4rem 0 1rem;
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, #b8860b, #fbc02d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInDown 1s ease-out;
+        }
+
+            .section-heading i {
+                font-size: 1.2em;
+                color: #fbc02d;
+            }
+
+            .section-heading::after {
+                content: '';
+                display: block;
+                width: 80px;
+                height: 4px;
+                background-color: #fbc02d;
+                margin: 10px auto 0;
+                border-radius: 10px;
+            }
+
+        .section-bio {
+            font-size: 1rem;
+            color: #6d4c41;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-style: italic;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-divider {
+            width: 60%;
+            height: 3px;
+            margin: 2rem auto;
+            background: linear-gradient(to right, #d4af37, #f7e7be, #d4af37);
+            border: none;
+            border-radius: 10px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 300px;
+            margin: 2rem auto;
+            background: #fff8dc;
+            border-radius: 16px;
+            padding: 1rem;
+            box-shadow: 0 6px 20px rgba(80, 50, 20, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 12px 30px rgba(90, 60, 30, 0.15);
+            }
+
+            .card img {
+                width: 100%;
+                height: 300px;
+                object-fit: cover;
+                border-radius: 12px;
+                border: 3px solid #a1887f;
+                margin-bottom: 1rem;
+                transition: transform 0.3s ease;
+            }
+
+                .card img:hover {
+                    transform: scale(1.03);
+                }
+
+        .product-info {
+            text-align: center;
+        }
+
+            .product-info h3 {
+                margin-bottom: 0.5rem;
+                color: #5d4037;
+            }
+
+            .product-info p {
+                margin: 0.3rem 0;
+                color: #4e342e;
+                font-size: 1rem;
+            }
+
+        .contact-form {
+            background-color: #f4f1e0;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(170, 140, 100, 0.2);
+            border: 2px solid #d2b48c;
+        }
+
+            .contact-form input,
+            .contact-form textarea,
+            .contact-form select {
+                background: #fff9f2;
+                border: 2px solid #a39171;
+                border-radius: 12px;
+                padding: 0.75rem 1rem;
+                margin-bottom: 1rem;
+                width: 100%;
+                color: #4e433f;
+                font-family: 'Playfair Display', serif;
+            }
+
+                .contact-form input::placeholder,
+                .contact-form textarea::placeholder {
+                    color: #998675;
+                }
+
+            .contact-form h4 {
+                color: #7a5c3e;
+                margin-bottom: 0.5rem;
+                font-weight: 600;
+            }
+
+        .form-select {
+            background-color: #f8f4e3;
+            color: #5c4a3a;
+            border-color: #a39171;
+        }
+
+        .submit-btn {
+            background: #556b2f;
+            color: #fff8e7;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(101, 78, 56, 0.2);
+            transition: background 0.3s ease;
+        }
+
+            .submit-btn:hover {
+                background: #8f9779;
+                color: #fff8e7;
+            }
+
+        #totalPrice {
+            color: #6b4226;
+            font-weight: 700;
+        }
+
+        footer {
+            background: #c9a227;
+            padding: 1rem;
+            text-align: center;
+            color: #4e342e;
+            font-weight: bold;
+            border-top: 2px solid #4e342e;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f0e3cd;
+            color: #6b4226;
+            font-weight: 600;
+        }
+
+        /* Navigation Bar Styling */
+        .navbar {
+            background-color: #fffaf0 !important;
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+
+        .nav-link.btn {
+            color: #5d4037 !important;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            text-shadow: 1px 1px 1px rgba(201, 162, 39, 0.1);
+        }
+
+            .nav-link.btn:hover {
+                color: #c9a227 !important;
+                background-color: #f7f1e5 !important;
+                border-radius: 8px;
+            }
+
+        /* Dropdown Menu Styling */
+        .dropdown-menu {
+            background-color: #fff8dc;
+            border: 1px solid #d2b48c;
+            box-shadow: 0 6px 20px rgba(170, 140, 100, 0.1);
+            border-radius: 12px;
+            font-family: 'Playfair Display', serif;
+            padding: 0.5rem;
+            min-width: 180px;
+            z-index: 1000;
+        }
+
+        .dropdown-item {
+            color: #5c4a3a;
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 8px;
+        }
+
+            .dropdown-item i {
+                margin-right: 8px;
+                color: #b8860b;
+            }
+
+            .dropdown-item:hover {
+                background-color: #f0e3cd;
+                color: #6b4226;
+                font-weight: 600;
+            }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-image: none; /* remove default arrow */
+        }
+
+            .carousel-control-prev-icon::after,
+            .carousel-control-next-icon::after {
+                content: '';
+                display: inline-block;
+                width: 1.5rem;
+                height: 1.5rem;
+                border: solid #654321;
+                border-width: 0 4px 4px 0;
+                padding: 5px;
+            }
+
+            .carousel-control-prev-icon::after {
+                transform: rotate(135deg);
+            }
+
+            .carousel-control-next-icon::after {
+                transform: rotate(-45deg);
+            }
+
+        .golden-glow {
+            text-shadow: 2px 2px 12px rgba(255, 223, 115, 0.6), 0 0 20px rgba(255, 200, 0, 0.4);
+        }
+
+        .text-highlight {
+            color: #f9cb62;
+            font-weight: 500;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+        }
+
+        .brand-tagline {
+            animation: fadeIn 2s ease-in;
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.4);
+            color: #fff8e7;
+        }
+
+        .shop-btn {
+            background: linear-gradient(90deg, #a67c52, #c9a227);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+            .shop-btn:hover {
+                background: #8b5e3c;
+                color: #fff3e0;
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            }
+    </style>
+</head>
+
+
+<!-- LOGIN MODAL -->
+<div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content p-4">
+            <h5 class="modal-title mb-3">Login</h5>
+            <input type="text" id="loginUsername" class="form-control mb-2" placeholder="Username">
+            <input type="password" id="loginPassword" class="form-control mb-3" placeholder="Password">
+            <button class="btn btn-success" onclick="login()">Login</button>
+        </div>
+    </div>
+</div>
+
+<!-- SIGNUP MODAL -->
+<div class="modal fade" id="signupModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content p-4">
+            <h5 class="modal-title mb-3">Sign Up</h5>
+            <input type="text" id="signupUsername" class="form-control mb-2" placeholder="Choose a Username">
+            <input type="password" id="signupPassword" class="form-control mb-3" placeholder="Choose a Password">
+            <button class="btn btn-primary" onclick="signup()">Sign Up</button>
+        </div>
+    </div>
+</div>
+
+<body>
+    <!-- Navigation and Main Sections -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
+        <div class="container-fluid">
+            <span class="navbar-brand" style="color: #c9a227;">Isla Aurea ❀</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <button class="nav-link btn btn-link" onclick="scrollToTop()">
+                            <i class="bi bi-house-door me-1"></i>Home
+                        </button>
+                    </li>
+                    <li class="nav-item"><button class="nav-link btn btn-link" onclick="scrollToSection('About')">About</button></li>
+
+                    <!-- Collection dropdown -->
+                    <li class="nav-item dropdown position-relative" id="collectionDropdown">
+                        <button class="nav-link btn btn-link dropdown-toggle" onclick="toggleCollectionDropdown()">
+                            <i class="bi bi-flower2 me-1"></i>Collection
+                        </button>
+                        <ul class="dropdown-menu p-2 rounded shadow-sm border-0" id="collectionMenu"
+                            style="display: none; background-color: #fffaf0;">
+                            <li><button class="dropdown-item" onclick="scrollToSection('Swimwear')"><i class="bi bi-bag-heart me-2"></i>Swimwear</button></li>
+                            <li><button class="dropdown-item" onclick="scrollToSection('Jewelry')"><i class="bi bi-gem me-2"></i>Jewelry</button></li>
+                            <li><button class="dropdown-item" onclick="scrollToSection('Service')"><i class="bi bi-camera2 me-2"></i>Services</button></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><button class="nav-link btn btn-link" onclick="scrollToSection('Order')">Order Form</button></li>
+
+                    <!-- Account dropdown -->
+                    <li class="nav-item dropdown position-relative" id="accountDropdown">
+                        <button class="nav-link btn btn-link dropdown-toggle" onclick="toggleAccountDropdown()">
+                            <i class="bi bi-person-circle me-1"></i>Account
+                        </button>
+                        <ul class="dropdown-menu p-2 rounded shadow-sm border-0" id="accountMenu" style="display: none; position: absolute;">
+                            <li><button class="dropdown-item" onclick="showSignup()">Sign Up</button></li>
+                            <li><button class="dropdown-item" onclick="showLogin()">Log In</button></li>
+                            <li><button class="dropdown-item" onclick="logout()">Log Out</button></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid p-0" id="home">
+        <div class="position-relative" style="height: 100vh; overflow: hidden;">
+            <!-- Fullscreen Banner Image -->
+            <img src="https://i.pinimg.com/736x/d1/26/6e/d1266edbfc71979556102b5036f3d2b0.jpg"
+                 alt="Isla Aurea Banner"
+                 class="position-absolute w-100 h-100"
+                 style="object-fit: cover; filter: brightness(65%);" />
+
+            <!-- Gradient Overlay -->
+            <div class="position-absolute w-100 h-100"
+                 style="background: linear-gradient(to bottom right, rgba(0,0,0,0.3), rgba(201,162,39,0.45)); z-index: 1;">
+            </div>
+
+            <!-- Elegant Text Content -->
+            <div class="position-absolute top-50 start-50 translate-middle text-center text-white px-4" style="z-index: 2;">
+                <h1 class="display-2 fw-bold golden-glow mb-3"
+                    style="font-family: 'Playfair Display', serif; letter-spacing: 3px;">
+                    <span style="color: #ffd700;">Isla</span> <span style="color: #f5deb3;">Aurea</span>
+                </h1>
+                <p class="fs-4 fst-italic brand-tagline mb-4">
+                    Where <span class="text-highlight">sun-kissed shores</span> meet <span class="text-highlight">timeless elegance</span>.<br>
+                    Capture golden moments with <span class="text-highlight">island soul</span> in every detail.
+                </p>
+
+                <!-- Shop Now Button -->
+                <a href="javascript:void(0)" onclick="showSignup()" class="btn shop-btn px-5 py-3 fs-5">Shop Now ✨</a>
+                <a href="javascript:void(0)" onclick="showLogin()" class="btn btn-outline-light px-5 py-3 fs-5">
+                    Login 🔐
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <br />
+
+    </div>
+
+    <div class="container py-5" id="About">
+        <hr class="section-divider">
+        <!-- About -->
+        <h2 class="section-heading">
+            Welcome to Isla Aurea
+        </h2>
+
+        <p class="section-bio text-center">
+            A curated sanctuary where the sun meets the sea, and every detail tells a story. Rooted in the spirit of island living, Isla Aurea offers a timeless collection of minimalist swimwear, handcrafted jewelry, and golden-hour photography sessions that celebrate natural beauty, effortless elegance, and soulful moments.
+
+            Whether you're slipping into a breezy piece from our Aureline Swimwear, adorning yourself with celestial treasures from Isladore Jewelry, or capturing golden memories with Lumea Photography, each experience is designed to embrace the warmth, calm, and magic of the tropics.
+
+            Indulge in earthy tones, organic textures, and sun-kissed sophistication — all crafted to reflect the quiet luxury of island life.
+        </p>
+    </div>
+
+
+
+    <div class="container py-5" id="Swimwear">
+        <hr class="section-divider">
+
+        <!-- Aureline - Swimwear Carousel -->
+        <h4 class="section-heading">
+            <i class="bi bi-sunset-fill me-2"></i>Aureline
+        </h4>
+        <p class="section-bio text-center">
+            A vibrant swimwear collection inspired by sun-drenched beaches and golden island escapes.
+            Feel bold, free, and radiant.
+        </p>
+        <div id="aurelineCarousel" class="carousel slide container" data-bs-ride="carousel">
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#aurelineCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#aurelineCarousel" data-bs-slide-to="1"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <!-- Slide 1: Seco, Kanaway, Dahican -->
+                <div class="carousel-item active">
+                    <div class="row justify-content-center g-4">
+                        <!-- Seco -->
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card">
+                                <img src="https://i.pinimg.com/736x/f3/13/6e/f3136eae61b178c6836b1329335331cd.jpg" alt="Seco swimwear">
+                                <div class="product-info">
+                                    <h3>Seco</h3>
+                                    <p><em>Swimwear</em></p>
+                                    <p><strong>₱1,199.00</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Kanaway -->
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card">
+                                <img src="https://i.pinimg.com/736x/c8/2f/79/c82f791d44c6d2c06491c125f7194574.jpg" alt="Kanaway">
+                                <div class="product-info">
+                                    <h3>Kanaway</h3>
+                                    <p><em>Swimwear</em></p>
+                                    <p>₱1,489.00</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dahican -->
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card">
+                                <img src="https://i.pinimg.com/736x/d2/2f/9f/d22f9fe7057d3f6d3cbd354571ab2d97.jpg" alt="Dahican">
+                                <div class="product-info">
+                                    <h3>Dahican</h3>
+                                    <p><em>Swimwear</em></p>
+                                    <p>₱919.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Puerto, Siargao, Bonbon -->
+                <div class="carousel-item">
+                    <div class="row justify-content-center g-4">
+                        <!-- Puerto -->
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card">
+                                <img src="https://i.pinimg.com/736x/22/b3/42/22b3429c33f69d3cde9dbc537157963e.jpg" alt="Puerto">
+                                <div class="product-info">
+                                    <h3>Puerto</h3>
+                                    <p><em>Swimwear</em></p>
+                                    <p>₱2,759.00</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Siargao -->
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card">
+                                <img src="https://i.pinimg.com/736x/1e/e6/2b/1ee62b40c230f4fb86d73e8c1fef3227.jpg" alt="Siargao">
+                                <div class="product-info">
+                                    <h3>Siargao</h3>
+                                    <p><em>Swimwear</em></p>
+                                    <p>₱1,199.00</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bonbon -->
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card">
+                                <img src="https://i.pinimg.com/736x/34/c0/28/34c028c723d95cfa22652688e3eb2e4d.jpg" alt="Bonbon">
+                                <div class="product-info">
+                                    <h3>Bonbon</h3>
+                                    <p><em>Swimwear</em></p>
+                                    <p>₱1,499.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#aurelineCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#aurelineCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <hr class="section-divider">
+
+    <!-- Isladore - Jewelry Carousel -->
+    <div class="container py-5" id="Jewelry">
+        <h4 class="section-heading">
+            <i class="bi bi-gem me-2"></i>Isladore
+        </h4>
+        <p class="section-bio text-center">
+            A luxurious jewelry line crafted with island soul — seashells, pearls, and celestial designs
+            that shimmer with elegance.
+        </p>
+
+
+        <div id="isladoreCarousel" class="carousel slide container" data-bs-ride="carousel">
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#isladoreCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#isladoreCarousel" data-bs-slide-to="1"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="row justify-content-center g-4">
+                        <!-- Célure -->
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card">
+                                <img src="https://i.pinimg.com/736x/51/6d/e2/516de21cf2885d6d7ceb5169bb8e0d3c.jpg" alt="Célure seashells">
+                                <div class="product-info">
+                                    <h3>Célure</h3>
+                                    <p><em>Seashells</em></p>
+                                    <p><strong>₱2,399.00</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stellavia -->
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card">
+                                <img src="https://i.pinimg.com/736x/35/83/1b/35831b3e657d42dcfb80c42ef1244b33.jpg" alt="Starfish">
+                                <div class="product-info">
+                                    <h3>Stellavia</h3>
+                                    <p><em>Starfish</em></p>
+                                    <p>₱1,499.00</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Azaraé -->
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card">
+                                <img src="https://i.pinimg.com/736x/7c/2c/c2/7c2cc2d46f49b1b536c69b7b42c69539.jpg" alt="Flowers">
+                                <div class="product-info">
+                                    <h3>Azaraé</h3>
+                                    <p><em>Flowers</em></p>
+                                    <p>₱2,299.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="row justify-content-center g-4">
+                        <!-- Caeliette -->
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card">
+                                <img src="https://i.pinimg.com/736x/b4/2f/e2/b42fe239a0bd68a1ca1b25c26a7aafbf.jpg" alt="Sky">
+                                <div class="product-info">
+                                    <h3>Caeliette</h3>
+                                    <p><em>Sky</em></p>
+                                    <p>₱3,299.00</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Nacreva -->
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card">
+                                <img src="https://i.pinimg.com/736x/0d/ac/27/0dac27bc5656b94e48ac7f01a7a28851.jpg" alt="Pearl">
+                                <div class="product-info">
+                                    <h3>Nacreva</h3>
+                                    <p><em>Pearl</em></p>
+                                    <p>₱1,999.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#isladoreCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#isladoreCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+
+
+    <!-- Lumea - Photography -->
+
+    <div class="container py-5" id="Service">
+        <hr class="section-divider">
+        <h4 class="section-heading">
+            <i class="bi bi-camera-fill me-2"></i>Lumea Photography
+        </h4>
+        <p class="section-bio text-center">
+            Capture your golden memories with our curated tropical-themed photography experience.
+            Light, lens, and island vibes all in one frame.
+        </p>
+
+        <!-- Hero Image -->
+        <div class="text-center mb-5">
+            <img src="https://i.pinimg.com/736x/31/25/bf/3125bf74c01ee0e8e9479794272df1c5.jpg" alt="Sol"
+                 class="img-fluid rounded shadow" style="max-height: 500px; object-fit: cover;">
+
+            <img src="https://i.pinimg.com/736x/24/b4/e4/24b4e4eff7ceba7c166ddfd885352f84.jpg" alt="Golden Gaze"
+                 class="img-fluid rounded shadow" style="max-height: 500px; object-fit: cover;">
+
+            <img src="https://i.pinimg.com/736x/ce/b9/4f/ceb94f775f5d3738dca1b6a952ec82b5.jpg" alt="Luna"
+                 class="img-fluid rounded shadow" style="max-height: 500px; object-fit: cover;">
+
+
+        </div>
+        <!-- Photography Packages -->
+        <div class="row text-center">
+            <!-- Sol -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-sun-fill fs-1 text-warning mb-3"></i>
+                        <h5 class="card-title">Sol</h5>
+                        <p class="card-text">
+                            A dreamy, magical take on daylight moments.
+                        </p>
+                        <br />
+                        <p><strong> Photography Time: 6:00 AM to 8:00 AM</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Golden Gaze -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-sunset-fill fs-1 text-warning mb-3"></i>
+                        <h5 class="card-title">Golden Gaze</h5>
+                        <p class="card-text">
+                            For warm, sun-kissed portraits during golden hour.
+                        </p>
+                        <br />
+
+                        <p><strong>Photography Time: 4:30 PM to 6:30 PM</strong></p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Luna -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-moon-stars-fill fs-1 text-primary mb-3"></i>
+                        <h5 class="card-title">Luna</h5>
+                        <p class="card-text">
+                            For capturing candid and magical moments under the stars.
+                        </p>
+                        <br />
+
+                        <p><strong>Photography Time: 7:00 PM to 9:00 PM</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <hr class="section-divider">
+
+        <!--- Order Form-->
+        <h2 class="section-heading"><i class="bi bi-cart-check me-2"></i>Order Form</h2>
+        <p class="section-bio text-center">Customize your dream experience with our tailored packages. Choose your favorites from swimwear, jewelry, and photography. Sign up now and become a member.</p>
+        <div class="container py-5" id="orderSection" style="display: none;">
+            <div id="Order">
+                <form class="contact-form">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="contact">Your Contact Number</label>
+                            <input type="text" id="contact" placeholder="Enter your number" required>
+                        </div>
+
+                        <!-- Swimwear -->
+                        <div class="col-md-4">
+                            <h4><i class="bi bi-bag-fill"></i> Swimwear</h4>
+                            <label for="swimwearSelect">Choose Item:</label>
+                            <select class="form-select" id="swimwearSelect">
+                                <option value="0">-- Select --</option>
+                                <option value="1199">Seco - ₱1,199</option>
+                                <option value="1489">Kanaway - ₱1,489</option>
+                                <option value="919">Dahican - ₱919</option>
+                                <option value="2759">Puerto - ₱2,759</option>
+                                <option value="1199">Siargao - ₱1,199</option>
+                                <option value="1499">Bonbon - ₱1,499</option>
+                            </select>
+                        </div>
+
+                        <!-- Jewelry -->
+                        <div class="col-md-4">
+                            <h4><i class="bi bi-gem"></i> Jewelry</h4>
+                            <label for="jewelrySelect">Choose Item:</label>
+                            <select class="form-select" id="jewelrySelect">
+                                <option value="0">-- Select --</option>
+                                <option value="2399">Célure - ₱2,399</option>
+                                <option value="1499">Stellavia - ₱1,499</option>
+                                <option value="2299">Azaraé - ₱2,299</option>
+                                <option value="3299">Caeliette - ₱3,299</option>
+                                <option value="1999">Nacreva - ₱1,999</option>
+                            </select>
+                        </div>
+
+                        <!-- Photography -->
+                        <div class="col-md-4">
+                            <h4><i class="bi bi-camera2"></i> Photography</h4>
+                            <label for="photoSelect">Choose Package:</label>
+                            <select class="form-select" id="photoSelect">
+                                <option value="0">-- Select --</option>
+                                <option value="2000">Sol - ₱2,000</option>
+                                <option value="2500">Golden Gaze - ₱2,500</option>
+                                <option value="2800">Luna - ₱2,800</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-5">
+                        <h3>Total: <span class="text-success">₱<span id="totalPrice">0</span>.00</span></h3>
+                        <button type="submit" class="submit-btn mt-3">Submit Order 💖</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+            <!-- for DEMO(jai part): add computation of total -->
+        <script>
+            const swimwearSelect = document.getElementById("swimwearSelect");
+            const jewelrySelect = document.getElementById("jewelrySelect");
+            const photoSelect = document.getElementById("photoSelect");
+            const totalPriceEl = document.getElementById("totalPrice");
+
+            function calculateTotal() {
+                const swim = parseFloat(swimwearSelect.value);
+                const jewel = parseFloat(jewelrySelect.value);
+                const photo = parseFloat(photoSelect.value);
+                const total = (swim || 0) + (jewel || 0) + (photo || 0);
+                totalPriceEl.textContent = total.toLocaleString();
+            }
+
+            swimwearSelect.addEventListener("change", calculateTotal);
+            jewelrySelect.addEventListener("change", calculateTotal);
+            photoSelect.addEventListener("change", calculateTotal);
+        </script>
+    </div>
+
+    <script>
+        // Show modals
+        function showLogin() {
+            var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+        }
+
+        function showSignup() {
+            var signupModal = new bootstrap.Modal(document.getElementById('signupModal'));
+            signupModal.show();
+        }
+
+        // Save signup credentials
+        function signup() {
+            const user = document.getElementById('signupUsername').value;
+            const pass = document.getElementById('signupPassword').value;
+            if (user && pass) {
+                localStorage.setItem('username', user);
+                localStorage.setItem('password', pass);
+                alert('Signup successful! You can now log in.');
+                bootstrap.Modal.getInstance(document.getElementById('signupModal')).hide();
+            } else {
+                alert('Please fill in both fields.');
+            }
+        }
+
+        // Login function
+        function login() {
+            const user = document.getElementById('loginUsername').value;
+            const pass = document.getElementById('loginPassword').value;
+            const storedUser = localStorage.getItem('username');
+            const storedPass = localStorage.getItem('password');
+
+            if (user === storedUser && pass === storedPass) {
+                localStorage.setItem('loggedIn', 'true');
+                alert('Login successful!');
+                bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+                showOrderForm();
+            } else {
+                alert('Incorrect username or password!');
+            }
+        }
+
+        // Show order form if user is logged in
+        function showOrderForm() {
+            if (localStorage.getItem('loggedIn') === 'true') {
+                document.getElementById('orderSection').style.display = 'block';
+            }
+        }
+
+        // Hide form if not logged in
+        window.onload = function () {
+            if (localStorage.getItem('loggedIn') === 'true') {
+                showOrderForm();
+            }
+        }
+
+        function logout() {
+            localStorage.setItem('loggedIn', 'false');
+            document.getElementById('orderSection').style.display = 'none';
+            alert('You have been logged out.');
+        }
+
+
+    </script>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function toggleAccountDropdown() {
+            const menu = document.getElementById('accountMenu');
+            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+        }
+        function toggleCollectionDropdown() {
+            const menu = document.getElementById('collectionMenu');
+            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+        }
+
+        window.addEventListener('click', function (e) {
+            if (!document.getElementById('collectionDropdown').contains(e.target)) {
+                document.getElementById('collectionMenu').style.display = 'none';
+            }
+            if (!document.getElementById('accountDropdown').contains(e.target)) {
+                document.getElementById('accountMenu').style.display = 'none';
+            }
+        });
+    </script>
+
+    <footer class="site-footer">
+        &copy; 2025 Isla Aurea. All rights reserved.
+    </footer>
+
+
+</body>
+</html>
